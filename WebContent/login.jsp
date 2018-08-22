@@ -14,9 +14,14 @@
 </head>
 
 <body>
-
   <div class="form">
-      
+      <!-- error message -->
+		<%
+			String login_msg=(String)request.getAttribute("error");  
+			if(login_msg!=null)
+			out.println("<center><font color=red size=4px >"+login_msg+"</font></center>");
+		%>
+      <br>
       <ul class="tab-group">
         <li class="tab active"><a href="#signup">Sign Up</a></li>
         <li class="tab"><a href="#login">Log In</a></li>
@@ -42,8 +47,13 @@
               </label>
               <input type="text"required autocomplete="off"/>
             </div>
-          </div>
-
+          </div> 
+          <div class="field-wrap">
+            <label>
+              User Name<span class="req">*</span>
+            </label>
+            <input type="text"required autocomplete="off"/>
+          </div>            
           <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
@@ -58,7 +68,7 @@
             <input type="password"required autocomplete="off"/>
           </div>
           
-          <button type="submit" class="button button-block">Get Started</button>
+          <button type="submit" class="button button-block">Sign in</button>
           
           </form>
 
@@ -67,20 +77,20 @@
         <div id="login">   
           <h1>Welcome Back!</h1>
           
-          <form action="/" method="post">
+          <form action="Login" method="post">
           
             <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="email"required autocomplete="off" name="mail"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password"required autocomplete="off" name="pass"/>
           </div>
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
@@ -88,7 +98,7 @@
           <button class="button button-block">Log In</button>
           
           </form>
-
+		
         </div>
         
       </div><!-- tab-content -->
